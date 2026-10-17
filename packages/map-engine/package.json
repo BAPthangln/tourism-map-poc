@@ -1,0 +1,19 @@
+{
+  "name": "@tourism-map/map-engine",
+  "version": "0.1.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tourism-map/shared-types": "*",
+    "maplibre-gl": "^4.7.1",
+    "three": "^0.169.0",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "@types/three": "^0.169.0",
+    "typescript": "^5.6.3"
+  }
+}

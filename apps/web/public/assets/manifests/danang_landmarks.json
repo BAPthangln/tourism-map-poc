@@ -1,0 +1,65 @@
+[
+  {
+    "id": "landmark_dragon_bridge",
+    "place_id": "poi_dragon_bridge",
+    "name": "Cầu Rồng (Dragon Bridge)",
+    "asset_url": "/assets/models/dragon_bridge.glb",
+    "asset_version": 1,
+    "position": {
+      "lng": 108.2274,
+      "lat": 16.0609,
+      "altitude_m": 0
+    },
+    "heading_deg": 96,
+    "pitch_deg": 0,
+    "roll_deg": 0,
+    "scale_m": 1.0,
+    "origin": "bottom_center",
+    "min_zoom": 13,
+    "max_zoom": 20,
+    "fallback_icon": "bridge",
+    "license_id": "danang_gov_open_data"
+  },
+  {
+    "id": "landmark_han_bridge",
+    "place_id": "poi_han_bridge",
+    "name": "Cầu Sông Hàn (Han River Swing Bridge)",
+    "asset_url": "/assets/models/han_bridge.glb",
+    "asset_version": 1,
+    "position": {
+      "lng": 108.2270,
+      "lat": 16.0722,
+      "altitude_m": 0
+    },
+    "heading_deg": 92,
+    "pitch_deg": 0,
+    "roll_deg": 0,
+    "scale_m": 1.0,
+    "origin": "bottom_center",
+    "min_zoom": 13,
+    "max_zoom": 20,
+    "fallback_icon": "bridge",
+    "license_id": "danang_gov_open_data"
+  },
+  {
+    "id": "landmark_apec_park",
+    "place_id": "poi_apec_park",
+    "name": "Công viên Vườn tượng APEC",
+    "asset_url": "/assets/models/apec_park.glb",
+    "asset_version": 1,
+    "position": {
+      "lng": 108.2238,
+      "lat": 16.0573,
+      "altitude_m": 0
+    },
+    "heading_deg": 0,
+    "pitch_deg": 0,
+    "roll_deg": 0,
+    "scale_m": 1.0,
+    "origin": "bottom_center",
+    "min_zoom": 13,
+    "max_zoom": 20,
+    "fallback_icon": "landmark",
+    "license_id": "danang_gov_open_data"
+  }
+]

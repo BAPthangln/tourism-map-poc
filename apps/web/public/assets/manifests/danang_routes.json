@@ -1,0 +1,54 @@
+[
+  {
+    "id": "route_han_river_highlights",
+    "destination_id": "dest_danang",
+    "name": "Hành trình Biểu tượng Sông Hàn",
+    "description": "Tuyến tham quan 5 điểm dừng kinh điển dọc theo hai bờ sông Hàn, kết nối các di sản văn hóa và kiến trúc nổi tiếng nhất của Đà Nẵng.",
+    "estimated_duration_min": 90,
+    "distance_km": 4.2,
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [108.2238, 16.0573],
+        [108.2235, 16.0598],
+        [108.2274, 16.0609],
+        [108.2312, 16.0617],
+        [108.2310, 16.0650],
+        [108.2295, 16.0690],
+        [108.2270, 16.0722]
+      ]
+    },
+    "stops": [
+      {
+        "place_id": "poi_apec_park",
+        "sequence": 1,
+        "dwell_minutes": 20,
+        "note": "Khởi hành tại Công viên APEC, chiêm ngưỡng kiến trúc Mái vòm Cánh diều."
+      },
+      {
+        "place_id": "poi_cham_museum",
+        "sequence": 2,
+        "dwell_minutes": 30,
+        "note": "Khám phá các bảo vật quốc gia điêu khắc sa thạch Chăm pa cổ kính."
+      },
+      {
+        "place_id": "poi_dragon_bridge",
+        "sequence": 3,
+        "dwell_minutes": 15,
+        "note": "Băng qua Cầu Rồng ngắm toàn cảnh sông nước và thành phố."
+      },
+      {
+        "place_id": "poi_love_bridge",
+        "sequence": 4,
+        "dwell_minutes": 15,
+        "note": "Dạo bước trên Cầu Tình Yêu và check-in Tượng Cá Chép Hóa Rồng."
+      },
+      {
+        "place_id": "poi_han_bridge",
+        "sequence": 5,
+        "dwell_minutes": 10,
+        "note": "Kết thúc tour tại Cầu quay Sông Hàn, ngắm ánh đèn thành phố."
+      }
+    ]
+  }
+]

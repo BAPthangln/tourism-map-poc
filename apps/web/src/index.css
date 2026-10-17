@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  background-color: #0f172a;
+}
+
+#map-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* POI Marker Styles */
+.poi-marker-container {
+  cursor: pointer;
+  transform: translate(-50%, -100%);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+}
+
+.poi-marker-container:hover {
+  transform: translate(-50%, -105%) scale(1.08);
+  z-index: 20;
+}
+
+.poi-marker {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  padding: 4px 10px 4px 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1.5px solid rgba(226, 232, 240, 0.9);
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  gap: 6px;
+}
+
+.poi-icon-box {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.poi-category-bridge .poi-icon-box {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.poi-category-culture .poi-icon-box {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.poi-category-food .poi-icon-box {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.poi-category-entertainment .poi-icon-box {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
+.badge-3d {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: white;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(236, 72, 153, 0.3);
+}
+
+.badge-fallback {
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.poi-selected {
+  border-color: #e11d48;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.poi-selected .poi-icon-box {
+  background: #e11d48;
+  color: white;
+}
+
+/* Glassmorphism Cards & Panels */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  color: #f8fafc;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.glass-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.glass-btn-primary {
+  background: linear-gradient(135deg, #e11d48, #be123c);
+  border: none;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.35);
+}
+
+.glass-btn-primary:hover {
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+}
