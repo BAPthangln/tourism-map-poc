@@ -61,5 +61,47 @@
     "max_zoom": 20,
     "fallback_icon": "landmark",
     "license_id": "danang_gov_open_data"
+  },
+  {
+    "id": "landmark_danang_cathedral",
+    "place_id": "poi_danang_cathedral",
+    "name": "Nhà thờ Chính tòa Đà Nẵng (Nhà thờ Con Gà)",
+    "asset_url": "/assets/models/danang_cathedral.glb",
+    "asset_version": 1,
+    "position": {
+      "lng": 108.22288,
+      "lat": 16.06670,
+      "altitude_m": 0
+    },
+    "heading_deg": 0,
+    "pitch_deg": 0,
+    "roll_deg": 0,
+    "scale_m": 1.0,
+    "origin": "bottom_center",
+    "min_zoom": 13,
+    "max_zoom": 20,
+    "fallback_icon": "landmark",
+    "license_id": "danang_gov_open_data"
+  },
+  {
+    "id": "landmark_danang_museum",
+    "place_id": "poi_danang_museum",
+    "name": "Bảo tàng Đà Nẵng (Thành Điện Hải)",
+    "asset_url": "/assets/models/danang_museum.glb",
+    "asset_version": 1,
+    "position": {
+      "lng": 108.22241,
+      "lat": 16.07635,
+      "altitude_m": 0
+    },
+    "heading_deg": 0,
+    "pitch_deg": 0,
+    "roll_deg": 0,
+    "scale_m": 1.0,
+    "origin": "bottom_center",
+    "min_zoom": 13,
+    "max_zoom": 20,
+    "fallback_icon": "landmark",
+    "license_id": "danang_gov_open_data"
   }
 ]

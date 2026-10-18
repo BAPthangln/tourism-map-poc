@@ -232,12 +232,212 @@ async function generateApecPark() {
   return exportGLB(scene, path.join(outputDir, 'apec_park.glb'));
 }
 
+// 4. Da Nang Cathedral — Nhà thờ Chính tòa (Nhà thờ Con Gà)
+// Pink-painted Gothic church, 70m tall tower with rooster weather vane
+async function generateDaNangCathedral() {
+  const scene = new THREE.Scene();
+  scene.name = 'DaNangCathedral';
+
+  const pinkMat = new THREE.MeshStandardMaterial({ color: 0xfba4b4, roughness: 0.7 }); // Signature dusty rose-pink
+  const grayMat = new THREE.MeshStandardMaterial({ color: 0xd1d5db, roughness: 0.6 }); // Stone trim
+  const roofMat = new THREE.MeshStandardMaterial({ color: 0x6b7280, roughness: 0.5 }); // Slate roof
+  const glassMat = new THREE.MeshStandardMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.55, roughness: 0.1 });
+  const goldMat = new THREE.MeshStandardMaterial({ color: 0xfbbf24, metalness: 0.8, roughness: 0.2 });
+
+  // --- Nave (main hall body): 24m wide × 14m deep × 14m tall ---
+  const naveMesh = new THREE.Mesh(new THREE.BoxGeometry(24, 14, 14), pinkMat);
+  naveMesh.position.set(0, 7, 0);
+  scene.add(naveMesh);
+
+  // Nave pitched roof (triangular prism via cylinder trick)
+  const naveRoofGeo = new THREE.CylinderGeometry(0, 14.5, 6, 4);
+  naveRoofGeo.rotateY(Math.PI / 4);
+  const naveRoof = new THREE.Mesh(naveRoofGeo, roofMat);
+  naveRoof.position.set(0, 17, 0);
+  scene.add(naveRoof);
+
+  // --- Side aisles (narrower, flanking the nave) ---
+  for (const zOff of [-11, 11]) {
+    const aisle = new THREE.Mesh(new THREE.BoxGeometry(22, 9, 6), pinkMat);
+    aisle.position.set(0, 4.5, zOff);
+    scene.add(aisle);
+
+    const aisleRoofGeo = new THREE.CylinderGeometry(0, 12, 4, 4);
+    aisleRoofGeo.rotateY(Math.PI / 4);
+    const aisleRoof = new THREE.Mesh(aisleRoofGeo, roofMat);
+    aisleRoof.position.set(0, 11, zOff);
+    scene.add(aisleRoof);
+  }
+
+  // --- Main bell tower (front/west): 7m × 7m, height 50m ---
+  const tower = new THREE.Mesh(new THREE.BoxGeometry(7, 50, 7), pinkMat);
+  tower.position.set(-14.5, 25, 0);
+  scene.add(tower);
+
+  // Tower stone corner trim
+  for (const [zOff, xOff] of [[-3.7, 0.3], [3.7, 0.3], [-3.7, -0.3], [3.7, -0.3]]) {
+    const trim = new THREE.Mesh(new THREE.BoxGeometry(1.2, 52, 1.2), grayMat);
+    trim.position.set(-14.5 + xOff, 25, zOff);
+    scene.add(trim);
+  }
+
+  // Tower Gothic spire
+  const spireGeo = new THREE.ConeGeometry(4, 22, 8);
+  const spire = new THREE.Mesh(spireGeo, roofMat);
+  spire.position.set(-14.5, 61, 0);
+  scene.add(spire);
+
+  // Rooster weather vane on top (Con Gà)
+  const roostersphere = new THREE.Mesh(new THREE.SphereGeometry(0.8, 8, 8), goldMat);
+  roostersphere.position.set(-14.5, 72.8, 0);
+  scene.add(roostersphere);
+
+  const roosterBody = new THREE.Mesh(new THREE.SphereGeometry(1.1, 8, 6), goldMat);
+  roosterBody.scale.set(1.2, 0.9, 0.7);
+  roosterBody.position.set(-14.5, 74.5, 0);
+  scene.add(roosterBody);
+
+  const roosterTail = new THREE.Mesh(new THREE.ConeGeometry(0.5, 2.5, 6), goldMat);
+  roosterTail.rotation.z = Math.PI / 2;
+  roosterTail.position.set(-15.8, 74.5, 0);
+  scene.add(roosterTail);
+
+  // Cross on spire tip
+  const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.3, 3.5, 0.3), goldMat);
+  crossV.position.set(-14.5, 73.5, 0);
+  scene.add(crossV);
+  const crossH = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 2.2), goldMat);
+  crossH.position.set(-14.5, 74.5, 0);
+  scene.add(crossH);
+
+  // --- Gothic arched windows (simplified as colored panels) ---
+  for (const xOff of [-6, 0, 6]) {
+    // Front facade windows
+    const win = new THREE.Mesh(new THREE.BoxGeometry(2.5, 5, 0.3), glassMat);
+    win.position.set(xOff, 10, -7.15);
+    scene.add(win);
+  }
+
+  // Large rose window on front facade
+  const roseWin = new THREE.Mesh(new THREE.CylinderGeometry(2.8, 2.8, 0.3, 16), glassMat);
+  roseWin.rotation.x = Math.PI / 2;
+  roseWin.position.set(-13, 38, 3.7);
+  scene.add(roseWin);
+
+  return exportGLB(scene, path.join(outputDir, 'danang_cathedral.glb'));
+}
+
+// 5. Da Nang Museum — Thành Điện Hải (citadel fortress)
+// Star-shaped Vauban-style citadel, built by Gia Long dynasty
+async function generateDaNangMuseum() {
+  const scene = new THREE.Scene();
+  scene.name = 'ThanhDienHai';
+
+  const wallMat = new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.85 }); // Amber brick walls
+  const roofMat = new THREE.MeshStandardMaterial({ color: 0x713f12, roughness: 0.7 });  // Dark brown tiled roof
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x92400e, roughness: 0.95 }); // Earthy courtyard
+  const gateMat = new THREE.MeshStandardMaterial({ color: 0x78350f, roughness: 0.8 });
+
+  // --- Courtyard base (80m × 80m) ---
+  const ground = new THREE.Mesh(new THREE.BoxGeometry(80, 1.5, 80), groundMat);
+  ground.position.set(0, 0.75, 0);
+  scene.add(ground);
+
+  // --- Outer perimeter walls (Vauban rectangular) ---
+  const wallH = 6;
+  const wallT = 3;
+  // North & South walls
+  for (const zOff of [-40, 40]) {
+    const wall = new THREE.Mesh(new THREE.BoxGeometry(86, wallH, wallT), wallMat);
+    wall.position.set(0, wallH / 2 + 1.5, zOff);
+    scene.add(wall);
+  }
+  // East & West walls
+  for (const xOff of [-40, 40]) {
+    const wall = new THREE.Mesh(new THREE.BoxGeometry(wallT, wallH, 86), wallMat);
+    wall.position.set(xOff, wallH / 2 + 1.5, 0);
+    scene.add(wall);
+  }
+
+  // --- Corner bastions (diamond-shaped gun platforms) ---
+  for (const [xOff, zOff] of [[-38, -38], [38, -38], [-38, 38], [38, 38]]) {
+    const bastionGeo = new THREE.CylinderGeometry(0, 9, wallH + 3, 4);
+    bastionGeo.rotateY(Math.PI / 4);
+    const bastion = new THREE.Mesh(bastionGeo, wallMat);
+    bastion.position.set(xOff, (wallH + 3) / 2 + 1.5, zOff);
+    scene.add(bastion);
+
+    // Battlement (crenellations)
+    for (let i = 0; i < 4; i++) {
+      const crGeo = new THREE.BoxGeometry(2, 2.5, 2);
+      const cr = new THREE.Mesh(crGeo, wallMat);
+      const angle = (i / 4) * Math.PI * 2 + Math.PI / 4;
+      cr.position.set(xOff + Math.cos(angle) * 5.5, wallH + 3 + 1.5, zOff + Math.sin(angle) * 5.5);
+      scene.add(cr);
+    }
+  }
+
+  // --- Main gate (South side) with arch ---
+  const gatePillarL = new THREE.Mesh(new THREE.BoxGeometry(4, wallH + 4, wallT + 1), gateMat);
+  gatePillarL.position.set(-5, (wallH + 4) / 2 + 1.5, -40);
+  scene.add(gatePillarL);
+
+  const gatePillarR = new THREE.Mesh(new THREE.BoxGeometry(4, wallH + 4, wallT + 1), gateMat);
+  gatePillarR.position.set(5, (wallH + 4) / 2 + 1.5, -40);
+  scene.add(gatePillarR);
+
+  // Gate roof
+  const gateRoofGeo = new THREE.CylinderGeometry(0, 6, 5, 4);
+  gateRoofGeo.rotateY(Math.PI / 4);
+  const gateRoof = new THREE.Mesh(gateRoofGeo, roofMat);
+  gateRoof.position.set(0, wallH + 4 + 3, -40);
+  scene.add(gateRoof);
+
+  // --- Main Building (command center / exhibition hall) ---
+  const mainBuilding = new THREE.Mesh(new THREE.BoxGeometry(28, 9, 18), wallMat);
+  mainBuilding.position.set(0, 6, 0);
+  scene.add(mainBuilding);
+
+  // Traditional Vietnamese hip roof (hipped roof = 4 slopes)
+  const hipRoofGeo = new THREE.CylinderGeometry(0, 16, 8, 4);
+  hipRoofGeo.rotateY(Math.PI / 4);
+  const hipRoof = new THREE.Mesh(hipRoofGeo, roofMat);
+  hipRoof.scale.set(1.8, 1, 1.2);
+  hipRoof.position.set(0, 14.5, 0);
+  scene.add(hipRoof);
+
+  // Decorative ridge beam
+  const ridgeBeam = new THREE.Mesh(new THREE.BoxGeometry(30, 1.2, 1.2), roofMat);
+  ridgeBeam.position.set(0, 18.5, 0);
+  scene.add(ridgeBeam);
+
+  // Upturned eave tips (traditional)
+  for (const [xOff, zOff] of [[-15.5, -9.5], [15.5, -9.5], [-15.5, 9.5], [15.5, 9.5]]) {
+    const eaveGeo = new THREE.ConeGeometry(1, 3, 6);
+    eaveGeo.rotateZ(xOff < 0 ? -Math.PI / 6 : Math.PI / 6);
+    const eave = new THREE.Mesh(eaveGeo, roofMat);
+    eave.position.set(xOff, 12.5, zOff);
+    scene.add(eave);
+  }
+
+  // Columns at entrance
+  for (const xOff of [-9, -3, 3, 9]) {
+    const col = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 1, 9, 10), wallMat);
+    col.position.set(xOff, 6, -9.5);
+    scene.add(col);
+  }
+
+  return exportGLB(scene, path.join(outputDir, 'danang_museum.glb'));
+}
+
 async function main() {
   console.log('Generating low-poly GLB models for Da Nang landmarks...');
   await generateDragonBridge();
   await generateHanBridge();
   await generateApecPark();
-  console.log('All 3D models generated successfully!');
+  await generateDaNangCathedral();
+  await generateDaNangMuseum();
+  console.log('All 5 3D models generated successfully!');
 }
 
 main().catch(console.error);

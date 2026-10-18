@@ -4,7 +4,10 @@
     "destination_id": "dest_danang",
     "name": "Cầu Rồng",
     "category": "bridge",
-    "coordinates": [108.22726, 16.06127],
+    "coordinates": [
+      108.22726,
+      16.06127
+    ],
     "altitude_m": 0,
     "rating": 4.8,
     "thumbnail_url": "/assets/images/dragon_bridge.jpg",
@@ -26,7 +29,10 @@
     "destination_id": "dest_danang",
     "name": "Cầu Sông Hàn (Cầu quay)",
     "category": "bridge",
-    "coordinates": [108.22841, 16.07236],
+    "coordinates": [
+      108.22841,
+      16.07236
+    ],
     "altitude_m": 0,
     "rating": 4.7,
     "thumbnail_url": "/assets/images/han_bridge.jpg",
@@ -48,7 +54,10 @@
     "destination_id": "dest_danang",
     "name": "Công viên Vườn tượng APEC",
     "category": "culture",
-    "coordinates": [108.22351, 16.05875],
+    "coordinates": [
+      108.22351,
+      16.05875
+    ],
     "altitude_m": 0,
     "rating": 4.6,
     "thumbnail_url": "/assets/images/apec_park.jpg",
@@ -69,7 +78,10 @@
     "destination_id": "dest_danang",
     "name": "Bảo tàng Điêu khắc Chăm",
     "category": "culture",
-    "coordinates": [108.22359, 16.06012],
+    "coordinates": [
+      108.22359,
+      16.06012
+    ],
     "rating": 4.7,
     "thumbnail_url": "/assets/images/cham_museum.jpg",
     "summary": "Bảo tàng trưng bày hiện vật điêu khắc Chăm pa quy mô và giá trị nhất thế giới.",
@@ -89,7 +101,10 @@
     "destination_id": "dest_danang",
     "name": "Cầu Tình Yêu & Tượng Cá Chép Hóa Rồng",
     "category": "landmark",
-    "coordinates": [108.23127, 16.06175],
+    "coordinates": [
+      108.23127,
+      16.06175
+    ],
     "rating": 4.6,
     "thumbnail_url": "/assets/images/love_bridge.jpg",
     "summary": "Địa điểm lãng mạn bên bờ đông sông Hàn với những cột đèn lồng trái tim đỏ rực và ổ khóa tình yêu.",
@@ -108,7 +123,10 @@
     "destination_id": "dest_danang",
     "name": "Phố đi bộ Bạch Đằng",
     "category": "entertainment",
-    "coordinates": [108.22421, 16.06354],
+    "coordinates": [
+      108.22421,
+      16.06354
+    ],
     "rating": 4.7,
     "thumbnail_url": "/assets/images/bach_dang_street.jpg",
     "summary": "Tuyến phố ven sông đẹp nhất Đà Nẵng với không gian đi bộ, âm nhạc đường phố và ngắm cảnh đêm.",
@@ -127,7 +145,10 @@
     "destination_id": "dest_danang",
     "name": "Chợ Hàn",
     "category": "food",
-    "coordinates": [108.22417, 16.06828],
+    "coordinates": [
+      108.22417,
+      16.06828
+    ],
     "rating": 4.5,
     "thumbnail_url": "/assets/images/han_market.jpg",
     "summary": "Khu chợ truyền thống sầm uất bậc nhất trung tâm thành phố với hàng trăm món đặc sản miền Trung.",
@@ -146,7 +167,10 @@
     "destination_id": "dest_danang",
     "name": "Nhà thờ Chính tòa (Nhà thờ Con Gà)",
     "category": "culture",
-    "coordinates": [108.22288, 16.06670],
+    "coordinates": [
+      108.22288,
+      16.0667
+    ],
     "rating": 4.6,
     "thumbnail_url": "/assets/images/danang_cathedral.jpg",
     "summary": "Nhà thờ kiến trúc Gothic màu hồng phấn cổ kính được xây dựng từ thời Pháp năm 1923.",
@@ -158,14 +182,18 @@
       "publisher": "Google Maps & Giáo phận Đà Nẵng",
       "checked_at": "2026-10-18"
     },
-    "has_3d_landmark": false
+    "has_3d_landmark": true,
+    "landmark_id": "landmark_danang_cathedral"
   },
   {
     "id": "poi_marina_port",
     "destination_id": "dest_danang",
     "name": "Bến du thuyền Sông Hàn",
     "category": "entertainment",
-    "coordinates": [108.22635, 16.07543],
+    "coordinates": [
+      108.22635,
+      16.07543
+    ],
     "rating": 4.5,
     "thumbnail_url": "/assets/images/marina_port.jpg",
     "summary": "Điểm xuất phát của các chuyến du thuyền thưởng ngoạn vẻ đẹp lung linh sông Hàn về đêm.",
@@ -184,7 +212,10 @@
     "destination_id": "dest_danang",
     "name": "Bảo tàng Đà Nẵng (Thành Điện Hải)",
     "category": "culture",
-    "coordinates": [108.22241, 16.07635],
+    "coordinates": [
+      108.22241,
+      16.07635
+    ],
     "rating": 4.6,
     "thumbnail_url": "/assets/images/danang_museum.jpg",
     "summary": "Di tích quốc gia đặc biệt ghi dấu chiến công mở đầu cuộc kháng chiến chống Pháp năm 1858.",
@@ -196,14 +227,18 @@
       "publisher": "Google Maps & Bảo tàng Đà Nẵng",
       "checked_at": "2026-10-18"
     },
-    "has_3d_landmark": false
+    "has_3d_landmark": true,
+    "landmark_id": "landmark_danang_museum"
   },
   {
     "id": "poi_nguyen_van_troi_bridge",
     "destination_id": "dest_danang",
     "name": "Cầu đi bộ Nguyễn Văn Trỗi",
     "category": "bridge",
-    "coordinates": [108.22874, 16.05052],
+    "coordinates": [
+      108.22874,
+      16.05052
+    ],
     "rating": 4.7,
     "thumbnail_url": "/assets/images/nguyen_van_troi_bridge.jpg",
     "summary": "Cây cầu lâu đời nhất bắc qua sông Hàn, nay là cầu đi bộ ngắm hoàng hôn được yêu thích.",
@@ -222,7 +257,10 @@
     "destination_id": "dest_danang",
     "name": "Cầu Trần Thị Lý",
     "category": "bridge",
-    "coordinates": [108.22928, 16.04941],
+    "coordinates": [
+      108.22928,
+      16.04941
+    ],
     "rating": 4.6,
     "thumbnail_url": "/assets/images/tran_thi_ly_bridge.jpg",
     "summary": "Cây cầu dây văng cánh buồm độc đáo với trụ tháp nghiêng cao 145m.",
