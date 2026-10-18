@@ -27,11 +27,11 @@
     "asset_url": "/assets/models/han_bridge.glb",
     "asset_version": 2,
     "position": {
-      "lng": 108.22841,
-      "lat": 16.07236,
+      "lng": 108.22685,
+      "lat": 16.07230,
       "altitude_m": 0
     },
-    "heading_deg": 2.0,
+    "heading_deg": 95.0,
     "pitch_deg": 0,
     "roll_deg": 0,
     "scale_m": 1.0,
