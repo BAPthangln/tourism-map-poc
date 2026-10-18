@@ -163,6 +163,10 @@ export class SceneManager {
     }
   }
 
+  public updateLandmarkHeading(landmarkId: string, headingDeg: number) {
+    this.landmarkLayer.updateLandmarkHeading(landmarkId, headingDeg);
+  }
+
   public setRoutes(routes: TourRoute[]) {
     this.routesMap.clear();
     for (const r of routes) {

@@ -61,6 +61,39 @@ export class Landmark3DLayer implements CustomLayerInterface {
     }
   }
 
+  public computeLocalTransform(manifest: LandmarkManifest): THREE.Matrix4 {
+    const coord = maplibregl.MercatorCoordinate.fromLngLat(
+      [manifest.position.lng, manifest.position.lat],
+      manifest.position.altitude_m || 0
+    );
+    const meterScale = coord.meterInMercatorCoordinateUnits() * manifest.scale_m;
+
+    const headingRad = ((manifest.heading_deg || 0) * Math.PI) / 180;
+    const pitchRad = ((manifest.pitch_deg || 0) * Math.PI) / 180;
+    const rollRad = ((manifest.roll_deg || 0) * Math.PI) / 180;
+
+    const rotationX = new THREE.Matrix4().makeRotationX(Math.PI / 2 + pitchRad);
+    const rotationY = new THREE.Matrix4().makeRotationY(rollRad);
+    const rotationZ = new THREE.Matrix4().makeRotationZ(headingRad);
+
+    return new THREE.Matrix4()
+      .makeTranslation(coord.x, coord.y, coord.z)
+      .scale(new THREE.Vector3(meterScale, -meterScale, meterScale))
+      .multiply(rotationZ)
+      .multiply(rotationX)
+      .multiply(rotationY);
+  }
+
+  public updateLandmarkHeading(id: string, headingDeg: number) {
+    const lm = this.activeLandmarks.get(id);
+    if (!lm) return;
+    lm.manifest.heading_deg = headingDeg;
+    lm.localTransform = this.computeLocalTransform(lm.manifest);
+    if (this.map) {
+      this.map.triggerRepaint();
+    }
+  }
+
   public async addLandmark(manifest: LandmarkManifest): Promise<void> {
     if (this.activeLandmarks.has(manifest.id)) {
       return;
@@ -83,30 +116,7 @@ export class Landmark3DLayer implements CustomLayerInterface {
     const modelGroup = new THREE.Group();
     landmarkScene.add(modelGroup);
 
-    // Compute Mercator transform
-    const coord = maplibregl.MercatorCoordinate.fromLngLat(
-      [manifest.position.lng, manifest.position.lat],
-      manifest.position.altitude_m || 0
-    );
-    const meterScale = coord.meterInMercatorCoordinateUnits() * manifest.scale_m;
-
-    const headingRad = ((manifest.heading_deg || 0) * Math.PI) / 180;
-    const pitchRad = ((manifest.pitch_deg || 0) * Math.PI) / 180;
-    const rollRad = ((manifest.roll_deg || 0) * Math.PI) / 180;
-
-    // MapLibre Mercator space: X east, Y south, Z up.
-    // Three.js GLTF models: Y is up, -Z is forward.
-    // Rotate around X by 90deg to align Y-up GLTF to Z-up Mercator.
-    const rotationX = new THREE.Matrix4().makeRotationX(Math.PI / 2 + pitchRad);
-    const rotationY = new THREE.Matrix4().makeRotationY(rollRad);
-    const rotationZ = new THREE.Matrix4().makeRotationZ(headingRad);
-
-    const localTransform = new THREE.Matrix4()
-      .makeTranslation(coord.x, coord.y, coord.z)
-      .scale(new THREE.Vector3(meterScale, -meterScale, meterScale))
-      .multiply(rotationZ)
-      .multiply(rotationX)
-      .multiply(rotationY);
+    const localTransform = this.computeLocalTransform(manifest);
 
     const activeLandmark: ActiveLandmark = {
       manifest,

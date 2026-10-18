@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Place } from '@tourism-map/shared-types';
-import { Compass, Clock, DollarSign, MapPin, ShieldCheck, X } from 'lucide-react';
+import { Compass, Clock, DollarSign, MapPin, RotateCw, ShieldCheck, X } from 'lucide-react';
 
 interface Props {
   place: Place | null;
   onClose: () => void;
   onFlyTo: (place: Place) => void;
+  onRotateLandmark?: (landmarkId: string, headingDeg: number) => void;
 }
 
-export const POIDetailDrawer: React.FC<Props> = ({ place, onClose, onFlyTo }) => {
+export const POIDetailDrawer: React.FC<Props> = ({ place, onClose, onFlyTo, onRotateLandmark }) => {
+  const [heading, setHeading] = useState<number>(6);
+
+  useEffect(() => {
+    if (place?.id === 'poi_dragon_bridge') {
+      setHeading(6);
+    } else if (place?.id === 'poi_han_bridge') {
+      setHeading(2);
+    } else {
+      setHeading(0);
+    }
+  }, [place?.id]);
+
   if (!place) return null;
+
+  const handleHeadingChange = (val: number) => {
+    setHeading(val);
+    const landmarkId = place.landmark_id || `landmark_${place.id.replace('poi_', '')}`;
+    if (onRotateLandmark) {
+      onRotateLandmark(landmarkId, val);
+    }
+  };
 
   return (
     <div className="fixed bottom-5 left-5 max-w-sm w-full z-40 animate-in fade-in slide-in-from-bottom-4 duration-300">
@@ -88,6 +109,40 @@ export const POIDetailDrawer: React.FC<Props> = ({ place, onClose, onFlyTo }) =>
               </div>
             )}
           </div>
+
+          {/* Interactive 3D Model Rotation Tuner */}
+          {place.has_3d_landmark && (
+            <div className="p-2 rounded-lg bg-rose-500/10 border border-rose-500/25 space-y-1">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="font-semibold text-rose-300 flex items-center gap-1">
+                  <RotateCw size={12} className="animate-spin-slow" /> Xoay hướng mô hình 3D:
+                </span>
+                <span className="font-mono text-cyan-300 font-bold">{heading}°</span>
+              </div>
+              <div className="flex items-center gap-2 pt-1">
+                <input
+                  type="range"
+                  min="-180"
+                  max="180"
+                  step="2"
+                  value={heading}
+                  onChange={(e) => handleHeadingChange(parseInt(e.target.value))}
+                  className="w-full accent-rose-500 h-1.5 bg-white/20 rounded-lg cursor-pointer"
+                />
+              </div>
+              <div className="flex justify-between text-[9px] text-slate-400">
+                <span>Tây (-90°)</span>
+                <button
+                  type="button"
+                  onClick={() => handleHeadingChange(place.id === 'poi_dragon_bridge' ? 6 : 0)}
+                  className="text-cyan-300 underline hover:text-cyan-200"
+                >
+                  Mặc định chuẩn
+                </button>
+                <span>Đông (+90°)</span>
+              </div>
+            </div>
+          )}
 
           {/* Verified source evidence badge */}
           {place.source_evidence && (

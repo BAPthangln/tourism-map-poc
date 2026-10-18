@@ -12,7 +12,7 @@ import { POIDetailDrawer } from './components/POIDetailDrawer.tsx';
 import { TourPanel } from './components/TourPanel.tsx';
 import { GateATestModal } from './components/GateATestModal.tsx';
 import { AIAssistantModal } from './components/AIAssistantModal.tsx';
-import { Bot, Compass, MapPin, Navigation, Sparkles } from 'lucide-react';
+import { Bot, Compass, Layers, MapPin, Navigation, RotateCcw, RotateCw, Sparkles } from 'lucide-react';
 
 export const App: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -166,6 +166,37 @@ export const App: React.FC = () => {
     }
   };
 
+  const handleRotateMap = (deltaBearing: number) => {
+    const map = sceneManagerRef.current?.getMap();
+    if (map) {
+      const current = map.getBearing();
+      map.easeTo({
+        bearing: current + deltaBearing,
+        duration: 400,
+        essential: true,
+      });
+    }
+  };
+
+  const handleTogglePitch = () => {
+    const map = sceneManagerRef.current?.getMap();
+    if (map) {
+      const current = map.getPitch();
+      const next = current > 35 ? 0 : 60;
+      map.easeTo({
+        pitch: next,
+        duration: 700,
+        essential: true,
+      });
+    }
+  };
+
+  const handleRotateLandmark = (landmarkId: string, headingDeg: number) => {
+    if (sceneManagerRef.current) {
+      sceneManagerRef.current.updateLandmarkHeading(landmarkId, headingDeg);
+    }
+  };
+
   return (
     <div className="relative w-screen h-screen overflow-hidden select-none">
       {/* 1. Map Canvas */}
@@ -201,6 +232,33 @@ export const App: React.FC = () => {
           onSelectTier={handleSelectTier}
           onOpenGateATests={() => setShowGateATests(true)}
         />
+      </div>
+
+      {/* 3.5 Quick Map Rotation & Pitch Floating Controls */}
+      <div className="absolute top-[225px] right-4 z-30 pointer-events-auto">
+        <div className="glass-panel p-1.5 flex flex-col gap-1 items-center shadow-2xl border border-white/10">
+          <button
+            onClick={() => handleRotateMap(-30)}
+            className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors"
+            title="Xoay map sang trái (-30°)"
+          >
+            <RotateCcw size={15} />
+          </button>
+          <button
+            onClick={() => handleRotateMap(+30)}
+            className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors"
+            title="Xoay map sang phải (+30°)"
+          >
+            <RotateCw size={15} />
+          </button>
+          <button
+            onClick={handleTogglePitch}
+            className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors"
+            title="Đổi góc nhìn 2D phẳng / 3D nghiêng"
+          >
+            <Layers size={15} />
+          </button>
+        </div>
       </div>
 
       {/* 4. Left Tour Drawer (when open) */}
@@ -259,6 +317,7 @@ export const App: React.FC = () => {
         place={selectedPlace}
         onClose={() => setSelectedPlace(null)}
         onFlyTo={handleFlyToPlace}
+        onRotateLandmark={handleRotateLandmark}
       />
 
       {/* 7. Gate A Verification Test Suite Modal */}
