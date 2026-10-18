@@ -4,18 +4,18 @@
     "destination_id": "dest_danang",
     "name": "Cầu Rồng",
     "category": "bridge",
-    "coordinates": [108.2274, 16.0609],
+    "coordinates": [108.22726, 16.06127],
     "altitude_m": 0,
     "rating": 4.8,
-    "thumbnail_url": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&auto=format&fit=crop&q=80",
-    "summary": "Biểu tượng kiến trúc hiện đại của Đà Nẵng với dáng rồng vươn mình ra biển lớn.",
+    "thumbnail_url": "/assets/images/dragon_bridge.jpg",
+    "summary": "Biểu tượng kiến trúc hiện đại của Đà Nẵng với dáng rồng thời Lý màu vàng kim vươn mình ra Biển Đông.",
     "description": "Cầu Rồng dài 666m bắc qua sông Hàn, được khánh thành năm 2013. Cầu có thiết kế mô phỏng con rồng thời Lý mạnh mẽ, có khả năng phun lửa và phun nước vào 21h00 các ngày thứ Bảy, Chủ Nhật và các ngày lễ lớn.",
     "address": "Đường Nguyễn Văn Linh - Võ Văn Kiệt, Hải Châu / Sơn Trà, Đà Nẵng",
     "open_hours": "Cả ngày (Phun lửa/nước: 21h00 Thứ 7, CN)",
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "Cổng thông tin Du lịch Đà Nẵng (danangfantasticity)",
-      "checked_at": "2026-10-15",
+      "checked_at": "2026-10-18",
       "source_url": "https://danangfantasticity.com"
     },
     "has_3d_landmark": true,
@@ -26,10 +26,10 @@
     "destination_id": "dest_danang",
     "name": "Cầu Sông Hàn (Cầu quay)",
     "category": "bridge",
-    "coordinates": [108.2270, 16.0722],
+    "coordinates": [108.22841, 16.07236],
     "altitude_m": 0,
     "rating": 4.7,
-    "thumbnail_url": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/han_bridge.jpg",
     "summary": "Cây cầu quay đầu tiên tại Việt Nam, biểu tượng sức sống và lòng tự hào của người dân Đà Nẵng.",
     "description": "Được xây dựng từ sự đóng góp của chính người dân thành phố, phần giữa của cầu có thể quay 90 độ quanh trục để tàu thuyền lớn qua lại trên sông Hàn.",
     "address": "Đường Lê Duẩn - Phạm Văn Đồng, Hải Châu, Đà Nẵng",
@@ -37,7 +37,7 @@
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "Sở Du lịch TP Đà Nẵng",
-      "checked_at": "2026-10-15",
+      "checked_at": "2026-10-18",
       "source_url": "https://danangfantasticity.com"
     },
     "has_3d_landmark": true,
@@ -48,10 +48,10 @@
     "destination_id": "dest_danang",
     "name": "Công viên Vườn tượng APEC",
     "category": "culture",
-    "coordinates": [108.2238, 16.0573],
+    "coordinates": [108.22351, 16.05875],
     "altitude_m": 0,
     "rating": 4.6,
-    "thumbnail_url": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/apec_park.jpg",
     "summary": "Không gian xanh công cộng với mái vòm uốn lượn hình Cánh diều bay cao độc đáo bên bờ sông Hàn.",
     "description": "Khởi công từ sự kiện Tuần lễ cấp cao APEC 2017 và mở rộng năm 2022, công viên sở hữu kiến trúc mái vòm thép nghệ thuật, vườn cây xanh, hồ nước và khu trưng bày tượng điêu khắc quốc tế.",
     "address": "Đường Bạch Đằng nối dài, P. Bình Hiên, Hải Châu, Đà Nẵng",
@@ -59,7 +59,7 @@
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "UBND TP Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": true,
     "landmark_id": "landmark_apec_park"
@@ -71,7 +71,7 @@
     "category": "culture",
     "coordinates": [108.2235, 16.0598],
     "rating": 4.7,
-    "thumbnail_url": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/cham_museum.jpg",
     "summary": "Bảo tàng trưng bày hiện vật điêu khắc Chăm pa quy mô và giá trị nhất thế giới.",
     "description": "Thành lập năm 1919 bởi Trường Viễn Đông Bác Cổ Pháp, bảo tàng lưu giữ gần 3.000 hiện vật sa thạch và đất nung quý giá từ thế kỷ 7 đến thế kỷ 15, gồm nhiều bảo vật quốc gia như Đài thờ Trà Kiệu, Tượng Bồ Tát Tara.",
     "address": "Số 02 đường 2 Tháng 9, Hải Châu, Đà Nẵng",
@@ -79,7 +79,7 @@
     "ticket_price": "60.000 VNĐ / người lớn",
     "source_evidence": {
       "publisher": "Bảo tàng Điêu khắc Chăm Đà Nẵng",
-      "checked_at": "2026-10-15",
+      "checked_at": "2026-10-18",
       "source_url": "http://chammuseum.vn"
     },
     "has_3d_landmark": false
@@ -91,7 +91,7 @@
     "category": "landmark",
     "coordinates": [108.2312, 16.0617],
     "rating": 4.6,
-    "thumbnail_url": "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/love_bridge.jpg",
     "summary": "Địa điểm lãng mạn bên bờ đông sông Hàn với những cột đèn lồng trái tim đỏ rực và ổ khóa tình yêu.",
     "description": "Nằm ngay chân Cầu Rồng phía bờ đông, Cầu Tình Yêu dài 68m vươn ra mặt nước, nơi các cặp đôi gắn khóa ước nguyện. Cạnh đó là tượng Cá Chép Hóa Rồng bằng đá cẩm thạch trắng phun nước ra sông.",
     "address": "Đường Trần Hưng Đạo, Sơn Trà, Đà Nẵng",
@@ -99,7 +99,7 @@
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "Sở Du lịch TP Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   },
@@ -110,7 +110,7 @@
     "category": "entertainment",
     "coordinates": [108.2242, 16.0635],
     "rating": 4.7,
-    "thumbnail_url": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/bach_dang_street.jpg",
     "summary": "Tuyến phố ven sông đẹp nhất Đà Nẵng với không gian đi bộ, âm nhạc đường phố và ngắm cảnh đêm.",
     "description": "Tuyến phố rợp bóng cây cổ thụ chạy dọc theo bờ tây sông Hàn, tập trung các quán cà phê view sông, nhà cổ thời Pháp, các cụm điêu khắc ngoài trời và các hoạt động nghệ thuật về đêm.",
     "address": "Đường Bạch Đằng, Hải Châu, Đà Nẵng",
@@ -118,7 +118,7 @@
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "Trung tâm Xúc tiến Du lịch Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   },
@@ -129,7 +129,7 @@
     "category": "food",
     "coordinates": [108.2241, 16.0683],
     "rating": 4.5,
-    "thumbnail_url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/han_market.jpg",
     "summary": "Khu chợ truyền thống sầm uất bậc nhất trung tâm thành phố với hàng trăm món đặc sản miền Trung.",
     "description": "Chợ có lịch sử từ thời Pháp thuộc, là nơi tập trung các loại mắm trắm, chả bò Đà Nẵng, hải sản khô rim me, bánh khô mè cùng các quầy vải may áo dài lấy ngay.",
     "address": "119 Đường Trần Phú, Hải Châu, Đà Nẵng",
@@ -137,7 +137,7 @@
     "ticket_price": "Miễn phí vào chợ",
     "source_evidence": {
       "publisher": "Ban quản lý Chợ Hàn Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   },
@@ -148,7 +148,7 @@
     "category": "culture",
     "coordinates": [108.2229, 16.0667],
     "rating": 4.6,
-    "thumbnail_url": "https://images.unsplash.com/photo-1548625361-16a7353f868d?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/danang_cathedral.jpg",
     "summary": "Nhà thờ kiến trúc Gothic màu hồng phấn cổ kính được xây dựng từ thời Pháp năm 1923.",
     "description": "Nhà thờ cao 70m với các cửa sổ vòm cung nhọn mang phong cách Gothic, trên đỉnh tháp chuông có tượng con gà bằng đồng đặc trưng làm cột thu lôi và xác định hướng gió.",
     "address": "156 Đường Trần Phú, Hải Châu, Đà Nẵng",
@@ -156,7 +156,7 @@
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "Giáo phận Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   },
@@ -167,7 +167,7 @@
     "category": "entertainment",
     "coordinates": [108.2263, 16.0754],
     "rating": 4.5,
-    "thumbnail_url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/marina_port.jpg",
     "summary": "Điểm xuất phát của các chuyến du thuyền thưởng ngoạn vẻ đẹp lung linh sông Hàn về đêm.",
     "description": "Nơi neo đậu tàu du lịch đưa du khách trải nghiệm hải trình ngắm nhìn 5 cây cầu nổi tiếng của thành phố, thưởng thức múa Chăm và bữa tối trên sông.",
     "address": "Đường Bạch Đằng, đối diện Khách sạn Novotel, Hải Châu, Đà Nẵng",
@@ -175,7 +175,7 @@
     "ticket_price": "150.000 - 200.000 VNĐ / vé du thuyền",
     "source_evidence": {
       "publisher": "Cảng vụ Đường thủy nội địa Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   },
@@ -186,7 +186,7 @@
     "category": "culture",
     "coordinates": [108.2224, 16.0763],
     "rating": 4.6,
-    "thumbnail_url": "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/danang_museum.jpg",
     "summary": "Di tích quốc gia đặc biệt ghi dấu chiến công mở đầu cuộc kháng chiến chống Pháp năm 1858.",
     "description": "Thành Điện Hải được xây dựng từ thời Gia Long bằng gạch theo kiến trúc Vauban phòng thủ bờ biển, hiện là không gian bảo tàng tái hiện lịch sử hào hùng của xứ Đà thành.",
     "address": "24 Đường Trần Phú, Hải Châu, Đà Nẵng",
@@ -194,7 +194,7 @@
     "ticket_price": "20.000 VNĐ / người lớn",
     "source_evidence": {
       "publisher": "Bảo tàng Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   },
@@ -205,7 +205,7 @@
     "category": "bridge",
     "coordinates": [108.2287, 16.0505],
     "rating": 4.7,
-    "thumbnail_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/nguyen_van_troi_bridge.jpg",
     "summary": "Cây cầu lâu đời nhất bắc qua sông Hàn, nay là cầu đi bộ ngắm hoàng hôn được yêu thích.",
     "description": "Được xây dựng từ năm 1965 bằng giàn vòm thép Poni, cầu đã hoàn thành sứ mệnh giao thông cơ giới và được chuyển đổi thành không gian công cộng cho người đi bộ và xe đạp.",
     "address": "Nối liền đường Duy Tân và Trần Hưng Đạo, Đà Nẵng",
@@ -213,7 +213,7 @@
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "Sở Giao thông Vận tải Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   },
@@ -224,7 +224,7 @@
     "category": "bridge",
     "coordinates": [108.2292, 16.0494],
     "rating": 4.6,
-    "thumbnail_url": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&auto=format&fit=crop&q=80",
+    "thumbnail_url": "/assets/images/tran_thi_ly_bridge.jpg",
     "summary": "Cây cầu dây văng cánh buồm độc đáo với trụ tháp nghiêng cao 145m.",
     "description": "Thiết kế cầu lấy cảm hứng từ cánh buồm căng gió hướng ra đại dương, tạo điểm nhấn cảnh quan hiện đại ở cửa ngõ phía nam sông Hàn.",
     "address": "Đường 2 Tháng 9 - Bùi Thị Xuân, Đà Nẵng",
@@ -232,7 +232,7 @@
     "ticket_price": "Miễn phí",
     "source_evidence": {
       "publisher": "Sở Du lịch TP Đà Nẵng",
-      "checked_at": "2026-10-15"
+      "checked_at": "2026-10-18"
     },
     "has_3d_landmark": false
   }
