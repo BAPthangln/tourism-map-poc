@@ -280,24 +280,27 @@ export const App: React.FC = () => {
         </div>
       )}
 
-      {/* 5. Bottom Quick Action Bar - Prominent High-Contrast Floating Dock */}
-      <div className="absolute bottom-6 right-6 z-30 pointer-events-auto flex items-center gap-2.5 p-1.5 rounded-2xl bg-slate-950/90 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/60">
+      {/* 5. Bottom Quick Action Bar - Clean Prominent Floating Actions (No Dark Background) */}
+      <div className="absolute bottom-6 right-6 z-30 pointer-events-auto flex items-center gap-2.5">
         <button
           onClick={() => setShowTourPanel(!showTourPanel)}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center gap-2 shadow-lg ${
+          className={`px-4 py-2.5 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center gap-2 shadow-xl hover:scale-[1.02] active:scale-[0.98] ${
             showTourPanel || isTourPlaying
-              ? 'bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 text-white shadow-rose-600/40 border border-rose-400'
-              : 'bg-slate-800/90 hover:bg-slate-700/90 text-rose-300 hover:text-white border border-rose-500/30'
+              ? 'bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white shadow-rose-500/30 border border-rose-400'
+              : 'bg-white/95 backdrop-blur-md hover:bg-white text-slate-800 hover:text-rose-600 border border-slate-200/90 shadow-slate-900/10'
           }`}
           title="Tuyến tham quan di sản"
         >
-          <Navigation size={16} className={isTourPlaying ? 'animate-bounce text-white' : 'text-rose-400'} />
+          <Navigation
+            size={16}
+            className={showTourPanel || isTourPlaying ? 'animate-bounce text-white' : 'text-rose-500'}
+          />
           <span>{isTourPlaying ? 'Đang chạy Tour...' : 'Lộ trình Sông Hàn'}</span>
         </button>
 
         <button
           onClick={() => setShowAIChat(true)}
-          className="px-4 py-2.5 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center gap-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white shadow-lg shadow-purple-600/40 border border-purple-400/50 hover:scale-[1.03] active:scale-[0.98]"
+          className="px-4 py-2.5 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center gap-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white shadow-xl shadow-purple-600/30 hover:scale-[1.03] active:scale-[0.98]"
           title="Trợ lý AI Du lịch"
         >
           <Sparkles size={16} className="text-amber-300 animate-pulse" />
@@ -306,10 +309,10 @@ export const App: React.FC = () => {
 
         <button
           onClick={handleResetCamera}
-          className="px-3.5 py-2.5 rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-600 shadow-md hover:border-slate-400"
+          className="px-3.5 py-2.5 rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center gap-1.5 bg-white/95 backdrop-blur-md hover:bg-white text-slate-800 hover:text-cyan-600 border border-slate-200/90 shadow-xl shadow-slate-900/10 hover:scale-[1.02] active:scale-[0.98]"
           title="Góc nhìn toàn cảnh"
         >
-          <Compass size={16} className="text-cyan-400" />
+          <Compass size={16} className="text-cyan-600" />
           <span>Toàn cảnh</span>
         </button>
       </div>
