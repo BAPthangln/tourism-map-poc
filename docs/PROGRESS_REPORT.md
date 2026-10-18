@@ -31,10 +31,11 @@
   * Bổ sung cơ chế quản lý LOD (Level of Detail) theo khoảng cách camera.
   * Tùy chọn chuyển đổi sang Vector Tiles độc quyền khi có key thương mại.
 
-### 2.2. Dữ liệu Du lịch & Quản lý Vị trí (Tourism Data) — Đạt ~40%
+### 2.2. Dữ liệu Du lịch & Quản lý Vị trí (Tourism Data) — Đạt ~50%
 * ✅ **Đã hoàn thành:**
-  * Bộ dữ liệu seed chuẩn 17 POI thực tế tại Sông Hàn (địa chỉ, giá vé, giờ mở cửa, trích dẫn nguồn xác thực).
+  * Bộ dữ liệu seed chuẩn 12 POI thực tế tại Sông Hàn với tọa độ trích xuất trực tiếp từ Google Maps (WGS-84), ảnh minh họa thực tế đã xác minh lưu trữ local.
   * 1 Tuyến Tour mẫu 5 điểm dừng kết nối các công trình tiêu biểu hai bên bờ sông Hàn.
+  * **Tích hợp OSRM Routing Engine**: Tự động tính toán đường đi bám theo mạng lưới giao thông thực tế của Đà Nẵng thay vì đường chim bay, hỗ trợ abort an toàn khi hủy tour.
   * Bộ hợp đồng kiểu dữ liệu tĩnh (`@tourism-map/shared-types`): `Place`, `LandmarkManifest`, `TourRoute`, `MapAction`, `SceneState`.
 * ⏳ **Kế hoạch Phase 1:**
   * Dựng Backend REST API độc lập (`Fastify` hoặc `NestJS/Express`).
@@ -48,11 +49,12 @@
   * Đấu nối API Cloud LLM thực tế (Google Gemini API hoặc OpenAI GPT-4o).
   * Bổ sung bộ lọc prompt injection và rate limit tại server API.
 
-### 2.4. Tài nguyên Đồ họa 3D (3D Assets Pipeline) — Đạt ~40%
+### 2.4. Tài nguyên Đồ họa 3D (3D Assets Pipeline) — Đạt ~55%
 * ✅ **Đã hoàn thành:**
-  * Script tự động sinh 3 file GLB low-poly chuẩn kích thước: Cầu Rồng, Cầu Sông Hàn, Công viên APEC.
-  * Tổng dung lượng 3D ban đầu chỉ **188 KB** (đạt xuất sắc budget $\le 3\text{ MB}$).
-  * Hệ thống Landmark Manifest nạp động qua tọa độ GPS và heading xoay theo hướng thực tế.
+  * Script tự động sinh **5 file GLB** low-poly chuẩn tỷ lệ và tọa độ: Cầu Rồng, Cầu Sông Hàn, Công viên APEC, Nhà thờ Con Gà, Thành Điện Hải.
+  * Tổng dung lượng 5 mô hình chỉ **~304 KB** (đạt xuất sắc budget $\le 3\text{ MB}$, tải dưới 0.2s).
+  * Hệ thống Landmark Manifest nạp động qua tọa độ GPS Google Maps và heading xoay theo hướng thực tế.
+  * Hỗ trợ thanh trượt chỉnh góc quay mô hình 3D trực tiếp trong POI Detail Drawer.
 * ⏳ **Kế hoạch Phase 1:**
   * Tiếp nhận file mô hình 3D thực tế từ 3D Designer (mô hình Blender chi tiết hơn, tối ưu UV/Texture KTX2/Meshopt).
 
