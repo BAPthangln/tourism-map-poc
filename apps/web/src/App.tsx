@@ -219,7 +219,7 @@ export const App: React.FC = () => {
             </div>
             <div className="flex items-center gap-1 text-[11px] text-slate-300">
               <MapPin size={11} className="text-rose-400" />
-              <span>Sông Hàn • 15 POIs • 3 Landmark 3D</span>
+              <span>Sông Hàn • {places.length} POIs • {places.filter((p) => p.has_3d_landmark).length} Landmark 3D</span>
             </div>
           </div>
         </div>
