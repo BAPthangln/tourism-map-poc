@@ -280,34 +280,36 @@ export const App: React.FC = () => {
         </div>
       )}
 
-      {/* 5. Bottom Quick Action Bar */}
-      <div className="absolute bottom-6 right-6 z-30 pointer-events-auto flex items-center gap-2">
+      {/* 5. Bottom Quick Action Bar - Prominent High-Contrast Floating Dock */}
+      <div className="absolute bottom-6 right-6 z-30 pointer-events-auto flex items-center gap-2.5 p-1.5 rounded-2xl bg-slate-950/90 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/60">
         <button
           onClick={() => setShowTourPanel(!showTourPanel)}
-          className={`glass-btn py-2.5 px-3.5 shadow-xl ${
-            showTourPanel || isTourPlaying ? 'glass-btn-primary' : ''
+          className={`px-4 py-2.5 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center gap-2 shadow-lg ${
+            showTourPanel || isTourPlaying
+              ? 'bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 text-white shadow-rose-600/40 border border-rose-400'
+              : 'bg-slate-800/90 hover:bg-slate-700/90 text-rose-300 hover:text-white border border-rose-500/30'
           }`}
           title="Tuyến tham quan di sản"
         >
-          <Navigation size={15} />
+          <Navigation size={16} className={isTourPlaying ? 'animate-bounce text-white' : 'text-rose-400'} />
           <span>{isTourPlaying ? 'Đang chạy Tour...' : 'Lộ trình Sông Hàn'}</span>
         </button>
 
         <button
           onClick={() => setShowAIChat(true)}
-          className="glass-btn py-2.5 px-3.5 shadow-xl bg-gradient-to-r from-purple-600/80 to-rose-600/80 hover:from-purple-600 hover:to-rose-600 text-white font-semibold border-none"
+          className="px-4 py-2.5 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center gap-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white shadow-lg shadow-purple-600/40 border border-purple-400/50 hover:scale-[1.03] active:scale-[0.98]"
           title="Trợ lý AI Du lịch"
         >
-          <Sparkles size={15} className="text-amber-300 animate-pulse" />
+          <Sparkles size={16} className="text-amber-300 animate-pulse" />
           <span>Hỏi Trợ Lý AI</span>
         </button>
 
         <button
           onClick={handleResetCamera}
-          className="glass-btn py-2.5 px-3 shadow-xl"
+          className="px-3.5 py-2.5 rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-600 shadow-md hover:border-slate-400"
           title="Góc nhìn toàn cảnh"
         >
-          <Compass size={15} />
+          <Compass size={16} className="text-cyan-400" />
           <span>Toàn cảnh</span>
         </button>
       </div>
