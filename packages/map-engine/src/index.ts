@@ -8,3 +8,4 @@ export * from './animation/AnimationDirector.js';
 export * from './assets/AssetManager.js';
 export * from './performance/QualityManager.js';
 export * from './performance/PerformanceMonitor.js';
+export * from './routing/RoutingService.js';

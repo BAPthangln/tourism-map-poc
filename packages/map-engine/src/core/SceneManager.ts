@@ -14,6 +14,7 @@ import { CameraController } from '../animation/CameraController.js';
 import { AnimationDirector } from '../animation/AnimationDirector.js';
 import { QualityManager } from '../performance/QualityManager.js';
 import { PerformanceMonitor } from '../performance/PerformanceMonitor.js';
+import { fetchOsrmRoute, OsrmProfile } from '../routing/RoutingService.js';
 
 export interface SceneManagerConfig {
   container: HTMLElement | string;
@@ -24,6 +25,8 @@ export interface SceneManagerConfig {
   style?: string | import('maplibre-gl').StyleSpecification;
   onSelectPlace?: (place: Place | null) => void;
   onQualityChange?: (tier: QualityTier) => void;
+  /** OSRM routing profile. Defaults to 'foot' (walking) for tourism. */
+  routingProfile?: OsrmProfile;
 }
 
 export class SceneManager {
@@ -40,6 +43,9 @@ export class SceneManager {
   private routesMap = new Map<string, TourRoute>();
   private manifestsMap = new Map<string, LandmarkManifest>();
   private sceneState: SceneState;
+  private routingProfile: OsrmProfile;
+  /** Abort controller for in-flight OSRM requests */
+  private routingAbortController: AbortController | null = null;
 
   constructor(config: SceneManagerConfig) {
     this.qualityManager = new QualityManager();
@@ -50,6 +56,8 @@ export class SceneManager {
       quality: this.qualityManager.getTier(),
       cameraMode: 'manual',
     };
+
+    this.routingProfile = config.routingProfile ?? 'foot';
 
     this.landmarkLayer = new Landmark3DLayer('danang-landmark-layer');
     this.poiLayer = new POILayer({
@@ -190,23 +198,80 @@ export class SceneManager {
     }
   }
 
-  public startTour(routeId: string) {
+  public async startTour(routeId: string) {
     const route = this.routesMap.get(routeId);
     if (!route || !this.cameraController) return;
 
     this.sceneState.activeRouteId = routeId;
     this.sceneState.cameraMode = 'guided';
 
-    // Reveal the route line
-    this.routeLayer.revealRoute(route, 2000, () => {
-      // Start camera tour sequence
-      this.cameraController?.playTour(route, this.placesMap, { dwellMs: 2500 });
+    // Cancel any previous in-flight routing request
+    this.routingAbortController?.abort();
+    this.routingAbortController = new AbortController();
+
+    // Build waypoints from stop place_ids (in sequence order)
+    const sortedStops = [...route.stops].sort((a, b) => a.sequence - b.sequence);
+    const waypoints: [number, number][] = [];
+
+    for (const stop of sortedStops) {
+      const place = this.placesMap.get(stop.place_id);
+      if (place?.coordinates) {
+        waypoints.push(place.coordinates as [number, number]);
+      }
+    }
+
+    // Determine effective geometry: OSRM road-snapped or static fallback
+    let effectiveRoute = route;
+
+    if (waypoints.length >= 2) {
+      try {
+        const result = await fetchOsrmRoute(waypoints, {
+          profile: this.routingProfile,
+          signal: this.routingAbortController.signal,
+        });
+
+        // Clone route with OSRM geometry replacing the static LineString
+        effectiveRoute = {
+          ...route,
+          geometry: {
+            type: 'LineString',
+            coordinates: result.coordinates,
+          },
+          distance_km: result.distanceKm,
+          estimated_duration_min: Math.round(result.durationMin),
+        };
+
+        console.info(
+          `[SceneManager] OSRM route ready: ${result.distanceKm.toFixed(2)} km, ` +
+          `~${Math.round(result.durationMin)} min walking`
+        );
+      } catch (err: unknown) {
+        if ((err as Error).name === 'AbortError') {
+          console.info('[SceneManager] OSRM request aborted — tour cancelled.');
+          return;
+        }
+        console.warn('[SceneManager] OSRM fetch failed, falling back to static geometry:', err);
+        // effectiveRoute remains the original static geometry
+      }
+    } else {
+      console.warn('[SceneManager] Not enough waypoints for OSRM routing, using static geometry.');
+    }
+
+    // Update route in routesMap so AnimationDirector and TourPanel see the live geometry
+    this.routesMap.set(routeId, effectiveRoute);
+
+    // Reveal the road-snapped route line, then start camera sequence
+    this.routeLayer.revealRoute(effectiveRoute, 2000, () => {
+      this.cameraController?.playTour(effectiveRoute, this.placesMap, { dwellMs: 2500 });
     });
   }
 
   public stopTour() {
     this.sceneState.activeRouteId = undefined;
     this.sceneState.cameraMode = 'manual';
+    // Abort any in-flight OSRM request
+    this.routingAbortController?.abort();
+    this.routingAbortController = null;
     this.cameraController?.cancelSequence();
     this.routeLayer.hideRoute();
   }
